@@ -1,0 +1,16 @@
+Battle Tank
+
+*entre asteriscos foram inseridos copiando do Ben*
+
+Conceito: uma arena onde dois ou mais tanques batalham entre si até o último sobrevivente
+
+Regras: os tanques devem atirar uns nos outros e se proteger de tiros adversários, *se movendo através do terreno e usando obstáculos como escudo*
+
+Condição de vitória: eliminar todos os tanques inimigos da arena
+
+Condição de derrota: ser atingido até esgotar a barra de vida
+
+Requerimentos:
+- Som: motor do tanque em movimento, motor do tanque em descanso, som de disparo, som de explosão, *movimento do canhão, movimento da turret*
+- Artes visuais: grama, rocha, modelo de tanque, projétil (modelo ou efeito visual), explosão
+- Música: música de menu, música de vitória, música de derrota, talvez música de fundo na partida
