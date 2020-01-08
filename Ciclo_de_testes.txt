@@ -1,0 +1,10 @@
+BattleTank-alpha00001
+*Levou (pelo menos) 31 minutos para empacotar no notebook
+
+Menu
+- Redimensionamento de janela: OK
+- Start Game: OK
+
+Jogo
+- Movimento da câmera: OK
+- Saída (esc): OK
