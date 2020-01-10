@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "GameFramework/Actor.h"
+#include "Engine/World.h"
 #include "TankAIController.h"
 
 void ATankAIController::BeginPlay()
@@ -10,17 +10,23 @@ void ATankAIController::BeginPlay()
 
 	auto ControlledAITank = GetControlledTank();
 
-	auto FoundPlayerTank = GetPlayerTank();
-
-	UE_LOG(LogTemp, Warning, TEXT("Tank %s encontrou player %s."), *ControlledAITank->GetName(), *FoundPlayerTank->GetName());
-
 	if (!ControlledAITank)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AIController nao possui um tanque."));
 	}
+
+	auto PlayerTank = GetPlayerTank();
+
+	if (!PlayerTank)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tank %s nao encontrou player."),
+			*ControlledAITank->GetName());
+	}
 	else
 	{
-		
+		UE_LOG(LogTemp, Warning, TEXT("Tank %s encontrou player %s."),
+			*ControlledAITank->GetName(),
+			*PlayerTank->GetName());
 	}
 }
 
@@ -31,7 +37,7 @@ ATank* ATankAIController::GetControlledTank() const
 
 ATank* ATankAIController::GetPlayerTank() const
 {
-	return Cast<ATank>(GetPawn());
-	//TODO isso esta errado pois assim esta pegando a si proprio
-	//TODO arrumar para pegar o player
+	auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (!PlayerPawn) { return nullptr; }
+	return Cast<ATank>(PlayerPawn);
 }
