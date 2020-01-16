@@ -33,4 +33,8 @@ private:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+	/// toda medida de distancia da Unreal aparentemente eh medida em cm
+	float LaunchSpeed = 10000.f; // TODO encontrar default aceitavel
 };
