@@ -2,6 +2,7 @@
 
 
 #include "TankAIController.h"
+#include "Tank.h"
 #include "Engine/World.h"
 
 void ATankAIController::BeginPlay()
@@ -43,6 +44,8 @@ void ATankAIController::Tick(float Deltatime)
 		// ATank::AimAt(GetPlayerTank()->GetTargetLocation()); // isso deve estar errado, fui eu que fiz
 
 		// TODO Atirar se estiver pronto
+		GetControlledTank()->Fire();
+		// TODO ver por que nao estao atirando em mim
 	}
 }
 

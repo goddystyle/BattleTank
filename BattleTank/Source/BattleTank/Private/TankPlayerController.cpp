@@ -2,6 +2,7 @@
 
 
 #include "TankPlayerController.h"
+#include "Tank.h"
 #include "Engine/World.h"
 
 void ATankPlayerController::BeginPlay()
@@ -50,7 +51,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 /// obtem o ponto sobreposto pelo crosshair, TRUE se atingir landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
-	// Encontra a posicao da reticula de mira
+	// Encontra o ponto onde a reticula de mira esta posicionada
 	int32 ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
 
