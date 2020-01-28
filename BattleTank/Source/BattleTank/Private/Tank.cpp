@@ -53,8 +53,6 @@ void ATank::Fire()
 
 	if (Barrel && bIsReloaded)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%f: Tanque dispara"), Time);
-
 		// Spawna um projetil na localizacao do socket do canhao
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,
