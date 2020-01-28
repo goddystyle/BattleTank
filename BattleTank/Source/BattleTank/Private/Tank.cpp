@@ -50,10 +50,11 @@ void ATank::Fire()
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 	
 	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f: Tanque dispara"), Time);
 
 	if (Barrel && bIsReloaded)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("%f: Tanque dispara"), Time);
+
 		// Spawna um projetil na localizacao do socket do canhao
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,
