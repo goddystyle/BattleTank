@@ -21,6 +21,6 @@ public:
 	void SetThrottle(float Throttle);
 
 	// forca maxima por lagarta, em Newtons
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	float TrackMaxDrivingForce = 613000.f; // presume-se tanque de 61,3t e acelera a 1g
 };
