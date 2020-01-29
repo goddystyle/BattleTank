@@ -20,7 +20,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void SetThrottle(float Throttle);
 
-	// forca maxima por lagarta, em Newtons
+	// forca maxima por lagarta, em Newtons/100 pois a unidade padrao da Unreal eh cm
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
-	float TrackMaxDrivingForce = 613000.f; // presume-se tanque de 61,3t e acelera a 1g
+	float TrackMaxDrivingForce = 61300000.f; // presume-se tanque de 61,3t e acelera a 1g
 };
