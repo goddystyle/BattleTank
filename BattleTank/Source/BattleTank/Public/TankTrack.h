@@ -19,4 +19,8 @@ class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void SetThrottle(float Throttle);
+
+	// forca maxima por lagarta, em Newtons
+	UPROPERTY(EditDefaultsOnly)
+	float TrackMaxDrivingForce = 613000.f; // presume-se tanque de 61,3t e acelera a 1g
 };
