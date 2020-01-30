@@ -10,16 +10,6 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	auto ControlledTank = GetControlledTank();
-
-	/// se PlayerController nao possuiu um tanque
-	if (!ControlledTank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayerController nao possui um tanque"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayerController possui: %s"), *ControlledTank->GetName());
-	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -66,8 +56,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	{
 		// Line-trace nessa direcao para ver o que atingimos
 		GetLookVectorHitLocation(LookDirection, OutHitLocation);
-
-		// UE_LOG(LogTemp, Warning, TEXT("Direcao: %s"), *LookDirection.ToString());
 	}
 	
 	return true; // soh vai imprimir as coordenadas na tela se retornar TRUE
