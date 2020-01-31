@@ -13,8 +13,6 @@ UCLASS( ClassGroup = (Custom), meta = (BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 {
 	GENERATED_BODY()
-	
-	// TODO Clamp() na escala de throttle
 
 public:
 	UFUNCTION(BlueprintCallable, Category = Input)
