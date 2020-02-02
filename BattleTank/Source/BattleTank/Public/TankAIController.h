@@ -20,4 +20,7 @@ private:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float deltatime) override;
+
+	// distancia minima que o tanque inimigo pode chegar do player
+	float AcceptanceRadius = 3000.f;
 };

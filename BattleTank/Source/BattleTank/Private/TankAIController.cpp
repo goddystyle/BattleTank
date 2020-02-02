@@ -19,7 +19,8 @@ void ATankAIController::Tick(float Deltatime)
 
 	if (PlayerTank)
 	{
-		// TODO mover-se em direcao ao player
+		// mover-se em direcao ao player
+		MoveToActor(PlayerTank, AcceptanceRadius);
 
 		// Mirar no player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
