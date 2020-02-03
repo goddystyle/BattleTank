@@ -21,9 +21,11 @@ public:
 
 	virtual void Tick(float Deltatime) override;
 
-private:
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	ATank* GetControlledTank() const;
 
+private:
 	void AimTowardsCrosshair();
 
 	// return an OUT parameter, TRUE if it hits landscape
