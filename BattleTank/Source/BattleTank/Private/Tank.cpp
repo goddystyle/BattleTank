@@ -13,35 +13,48 @@ ATank::ATank()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
-	// nao precisa proteger pointers adicionados no constructor
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
+	UE_LOG(LogTemp, Warning, TEXT("CACHORRAO ATank::Constructor"))
+	// TODO deletar se nao precisar mais
+	//// nao precisa proteger pointers adicionados no constructor
+	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 }
 
-void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
+void ATank::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-	TankAimingComponent->SetBarrelReference(BarrelToSet);
-	Barrel = BarrelToSet;
+	UE_LOG(LogTemp, Warning, TEXT("CACHORRAO ATank::Initialise"))
+	if (!TankAimingComponent) { return; }
+	TankAimingComponent->Initialise(BarrelToSet, TurretToSet);
 }
 
-void ATank::SetTurretReference(UTankTurret* TurretToSet)
-{
-	TankAimingComponent->SetTurretReference(TurretToSet);
-}
+// TODO deletar se nao precisar mais
+//void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
+//{
+//	TankAimingComponent->SetBarrelReference(BarrelToSet);
+//	Barrel = BarrelToSet;
+//}
+//
+//void ATank::SetTurretReference(UTankTurret* TurretToSet)
+//{
+//	TankAimingComponent->SetTurretReference(TurretToSet);
+//}
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
-	Super::BeginPlay();	
+	Super::BeginPlay();
+	UE_LOG(LogTemp, Warning, TEXT("CACHORRAO ATank::BeginPlay"))
 }
 
+// TODO deletar se nao precisar mais
 // Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
+//void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+//{
+//	Super::SetupPlayerInputComponent(PlayerInputComponent);
+//}
 
 void ATank::AimAt(FVector HitLocation)
 {
+	if (!TankAimingComponent) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
