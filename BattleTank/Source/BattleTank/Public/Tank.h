@@ -7,7 +7,6 @@
 #include "Tank.generated.h"
 
 class UTankBarrel; // Forward declaration
-class UTankAimingComponent;
 class AProjectile;
 
 UCLASS()
@@ -16,14 +15,11 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
+	// TODO remover (eh soh um backup de seguranca)
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable)
 	void Fire();
-
-protected:
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
