@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Rafael Suvetailo @ 2020.
 
 #pragma once
 
@@ -28,17 +28,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "State")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
-	// TODO deletar se nao precisar mais
-	//void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	// TODO deletar se nao precisar mais
-	//void SetTurretReference(UTankTurret* TurretToSet);
-
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-	EFiringState FiringState = EFiringState::Aiming;
+	EFiringState FiringState = EFiringState::Locked;
 
 private:
 	// Sets default values for this component's properties

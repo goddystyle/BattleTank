@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Rafael Suvetailo @ 2020.
 
 
 #include "TankAimingComponent.h"
@@ -17,17 +17,6 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-// TODO deletar se nao precisar mais
-//void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
-//{
-//	Barrel = BarrelToSet;
-//}
-//
-//void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-//{
-//	Turret = TurretToSet;
-//}
-
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
 	Barrel = BarrelToSet;
@@ -36,9 +25,9 @@ void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* Tur
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	if (!Barrel) { return; }
+	if (!ensure(Barrel)) { return; }
 
-	if (!Turret) { return; }
+	if (!ensure(Turret)) { return; }
 
 	FVector OutLaunchVelocity(0);
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
@@ -61,29 +50,20 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		// ver estrutura no comentario no final desse arquivo
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-		MoveTurretTowards(AimDirection);
 	}
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
+	if (!ensure(Barrel) || !ensure(Turret)) { return; }
+
 	// Calcula diferenca entre rotacao atual do canhao e AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
 	Barrel->Elevate(DeltaRotator.Pitch);
-}
-
-void UTankAimingComponent::MoveTurretTowards(FVector AimDirection)
-{
-	auto TurretRotator = Turret->GetForwardVector().Rotation();
-	auto AimAsRotator = AimDirection.Rotation();
-	auto DeltaRotator = AimAsRotator - TurretRotator;
-
-	// Turret->Rotate(DeltaRotator.GetNormalized().Yaw);
-
-	// isso resolve o problema da rotacao nao fazer mais de 180 graus sem dar a volta pelo oposto
+	//// isso resolve o problema da rotacao nao fazer mais de 180 graus sem dar a volta pelo oposto:
 	if (FMath::Abs(DeltaRotator.Yaw) < 180)
 	{
 		Turret->Rotate(DeltaRotator.Yaw);

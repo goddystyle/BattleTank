@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Rafael Suvetailo @ 2020.
 
 #pragma once
 
@@ -7,7 +7,6 @@
 #include "Tank.generated.h"
 
 class UTankBarrel; // Forward declaration
-class UTankTurret;
 class UTankAimingComponent;
 class AProjectile;
 
@@ -18,17 +17,6 @@ class BATTLETANK_API ATank : public APawn
 
 public:
 	void AimAt(FVector HitLocation);
-
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
-
-	// TODO deletar se nao precisar mais
-	//UFUNCTION(BlueprintCallable, Category = Setup)
-	//void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	// TODO deletar se nao precisar mais
-	//UFUNCTION(BlueprintCallable, Category = Setup)
-	//void SetTurretReference(UTankTurret* TurretToSet);
 
 	UFUNCTION(BlueprintCallable)
 	void Fire();
@@ -44,13 +32,10 @@ private:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	// TODO deletar se nao precisar mais
-	//// Called to bind functionality to input
-	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 	
+	// TODO remover quando Firing for movido pro Aiming Component
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 9000.f;
 

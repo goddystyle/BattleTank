@@ -1,15 +1,24 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Rafael Suvetailo @ 2020.
 
 
 #include "TankPlayerController.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 #include "Engine/World.h"
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	auto ControlledTank = GetControlledTank();
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (ensure(AimingComponent))
+	{
+		FoundAimingComponent(AimingComponent);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerController nao encontrou AimingComponent em BeginPlay"));
+	}
+	// auto ControlledTank = GetControlledTank();
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -27,7 +36,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 /// movimenta a torre e o canhao rumo ao ponto sobreposto pela reticula 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetControlledTank()) { return; }
+	if (!ensure(GetControlledTank())) { return; }
 
 	FVector HitLocation;
 
