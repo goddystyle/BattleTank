@@ -24,7 +24,7 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	AimTowardsCrosshair();
+	// AimTowardsCrosshair();
 }
 
 /// verifica o tanque que foi possuido pelo PlayerController
@@ -42,7 +42,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		GetControlledTank()->AimAt(HitLocation);
+		// GetControlledTank()->AimAt(HitLocation);
 	}
 }
 

@@ -19,6 +19,7 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 }
 
+// TODO deletar depois de refatorar pro TankAimingComponent
 void ATank::Fire()
 {
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
