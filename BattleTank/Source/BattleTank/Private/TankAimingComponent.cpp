@@ -6,7 +6,7 @@
 #include "TankTurret.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "GameFramework/Actor.h"
+// #include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
