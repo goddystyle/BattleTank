@@ -56,11 +56,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 
 void UTankAimingComponent::Fire()
 {
+	if (!ensure(Barrel && ProjectileBlueprint)) { return; }
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 
 	auto Time = GetWorld()->GetTimeSeconds();
 
-	if (Barrel && bIsReloaded)
+	if (bIsReloaded)
 	{
 		// Spawna um projetil na localizacao do socket do canhao
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
@@ -69,7 +70,7 @@ void UTankAimingComponent::Fire()
 			Barrel->GetSocketRotation(FName("Projectile"))
 			);
 
-		// Projectile->LaunchProjectile(LaunchSpeed);
+		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 	}
 }

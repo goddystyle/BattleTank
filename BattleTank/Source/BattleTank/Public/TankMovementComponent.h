@@ -32,9 +32,4 @@ private:
 
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
-
-	// TODO observar que minha resposta ao desafio da licao 242 funcionou
-	// mesmo sendo diferende da resposta do Ben
-	// e mais simples também, sem novos includes e FW declaration
-	// Deixar assim e soh modificar se der problema pra frente
 };

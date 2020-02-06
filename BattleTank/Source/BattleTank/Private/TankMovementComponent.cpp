@@ -36,11 +36,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 	RightTrack->SetThrottle(Throw);
 
 	// TODO impedir velocidade dobrada por usar fly-by-wire e "analogico" ao mesmo tempo
-
-	// TODO observar que minha resposta ao desafio da licao 242 funcionou
-	// mesmo sendo diferende da resposta do Ben
-	// e mais simples também, sem novos includes e FW declaration
-	// Deixar assim e soh modificar se der problema pra frente
 }
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
