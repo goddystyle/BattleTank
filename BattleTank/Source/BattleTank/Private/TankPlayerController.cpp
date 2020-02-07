@@ -28,6 +28,8 @@ void ATankPlayerController::Tick(float DeltaTime)
 /// movimenta a torre e o canhao rumo ao ponto sobreposto pela reticula 
 void ATankPlayerController::AimTowardsCrosshair()
 {
+	if (!GetPawn()) { return; }
+
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(AimingComponent)) { return; }
 

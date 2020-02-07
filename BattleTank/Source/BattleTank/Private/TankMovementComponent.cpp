@@ -25,8 +25,6 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
-
-	// UE_LOG(LogTemp, Warning, TEXT("Direita: %f / Frente: %f"), RightThrow, ForwardThrow)
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
@@ -34,8 +32,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 	if (!ensure(LeftTrack && RightTrack)) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-
-	// TODO impedir velocidade dobrada por usar fly-by-wire e "analogico" ao mesmo tempo
 }
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
