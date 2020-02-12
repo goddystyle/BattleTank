@@ -38,7 +38,7 @@ public:
 	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
@@ -58,22 +58,23 @@ private:
 
 	UTankTurret* Turret = nullptr;
 
+	/* "EditDefaultsOnly" edita o valor de todos os tanques, em vez de permitir um valor
+	diferente para cada tanque (colocar em LaunchSpeed tambem?) */
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 9000.f;
 
-	/* "EditDefaultsOnly" edita o valor de todos os tanques, em vez de permitir um valor
-	diferente para cada tanque (colocar em LaunchSpeed tambem?) */
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3.f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 RoundsLeft = 10;
 
 	void MoveBarrelTowards(FVector AimDirection);
 
 	double LastFireTime = 0;
 
 	FVector AimDirection;
-
-	int RoundsLeft = 10;
 };

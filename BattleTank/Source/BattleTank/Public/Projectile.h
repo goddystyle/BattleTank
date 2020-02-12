@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Particles/ParticleSystemComponent.h" // TODO tentar tirar dps, soh coloquei pro VS sossegar
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -28,4 +29,10 @@ public:
 
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Collision")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Particle System")
+	UParticleSystemComponent* LaunchBlast = nullptr;
 };
