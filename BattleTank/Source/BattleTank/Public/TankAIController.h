@@ -17,7 +17,7 @@ class BATTLETANK_API ATankAIController : public AAIController
 protected:
 	// distancia minima que o tanque inimigo pode chegar do player
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float AcceptanceRadius = 3000.f;
+	float AcceptanceRadius = 30000.f;
 
 private:
 	virtual void BeginPlay() override;

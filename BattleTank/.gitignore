@@ -73,5 +73,4 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-# Starter Content
-**/StarterContent/**
+# Starter Content foi removido porque agora a pasta só tem o que é necessário
