@@ -31,6 +31,9 @@ private:
 	// return an OUT parameter, TRUE if it hits landscape
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 
+	UFUNCTION() // tem que ser UFUNCTION pra ser chamada
+	void OnPossessedTankDeath();
+
 	UPROPERTY(EditAnywhere)
 	float CrosshairXLocation = 0.5f;
 

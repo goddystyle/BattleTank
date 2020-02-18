@@ -20,7 +20,12 @@ protected:
 	float AcceptanceRadius = 30000.f;
 
 private:
+	UFUNCTION() // tem que ser UFUNCTION pra ser chamada
+	void OnPossessedTankDeath();
+
 	virtual void BeginPlay() override;
+
+	virtual void SetPawn(APawn* InPawn) override;
 
 	virtual void Tick(float deltatime) override;
 };
