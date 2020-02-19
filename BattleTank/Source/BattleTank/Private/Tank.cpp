@@ -10,11 +10,11 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-// o Tank do Ben nao tem BeginPlay, talvez de pra apagar?
-//void ATank::BeginPlay()
-//{
-//	Super::BeginPlay();
-//}
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentHealth = StartingHealth;
+}
 
 float ATank::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
