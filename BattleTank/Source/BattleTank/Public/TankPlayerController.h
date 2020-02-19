@@ -34,6 +34,12 @@ private:
 	UFUNCTION() // tem que ser UFUNCTION pra ser chamada
 	void OnPossessedTankDeath();
 
+	virtual void SetPawn(APawn* InPawn) override;
+
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
 	UPROPERTY(EditAnywhere)
 	float CrosshairXLocation = 0.5f;
 
@@ -42,8 +48,4 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float LineTraceRange = 1000000.0f;
-
-	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
-
-	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
 };
