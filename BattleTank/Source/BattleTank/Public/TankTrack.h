@@ -17,22 +17,15 @@ class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 private:
 	UTankTrack();
 
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+	TArray<class ASprungWheel*> GetWheels() const;
 
 public:
-	virtual void BeginPlay() override;
-
-	void ApplySidewaysForce();
-
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void SetThrottle(float Throttle);
 
-	void DriveTrack();
+	void DriveTrack(float CurrentThrottle);
 
 	// forca maxima por lagarta, em Newtons/100 pois a unidade padrao da Unreal eh cm
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float TrackMaxDrivingForce = 61300000.f; // presume-se tanque de 61,3t e acelera a 1g
-
-	float CurrentThrottle = 0;
 };
